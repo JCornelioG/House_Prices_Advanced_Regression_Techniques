@@ -1,27 +1,90 @@
-# Kaggle: House Prices Advanced Regression Techniques
+# Kaggle: House Prices - Advanced Regression Techniques
 
-This repo contains simple starter code for the Kaggle beginner level completition 'House Prices: Advanced Regression Techniques'. I wrote these two pieces of code to refresh my knowledge on xgboost and my coding skills with R and Python. Each one takes about one day. Hope you will find it helpful in some way
+Welcome to the repository for the Kaggle competition **[House Prices: Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques)**. This repository contains simple starter code in  Python, designed to help beginners get started with modeling house prices using XGBoost.
 
-# # About the dataset
-The dataset is a public dataset compiled by Dean De Cock for use in data science education. It's an incredible alternative for data scientists looking for a modernized and expanded version of the often cited Boston Housing dataset.
+I created these pieces of code to refresh my knowledge of XGBoost and sharpen my coding skills in Python. Each script was developed in about a day. I hope you find them helpful in your journey!
 
-# # What Is Included In My Code
-Exploratory Data Analysis
-Looking at some interesting numeric and categorical variables to understand the data.
-Data Cleaning and Preparation
-This includes fixing the data types, handling NAs, transforming categorical variables to numeric variables (with one-hot encoding and target encoding), and create simple and intuitive new features (not much feature engineering involved)
-Modeling with Xgboost
-Here I used the regressor in Xgboost for modeling, and the objective is set to optimize the RMSE of log(SalePrice), which is the same as the evaluation criteria of the competition. Also, I only did a 80/20 split of the training set for model validation, but ideally, you know, you should do a k-fold (especially when there are more data available).
+## About the Dataset
 
-# # Packages Used
-Python -- numpy, pandas, matplotlib, seaborn, xgboost, scikit-learn (for splitting data only...)
+The dataset for this competition was compiled by Dean De Cock and serves as a modernized and expanded alternative to the classic Boston Housing dataset. It provides a rich set of features for modeling and is widely used for data science education.
 
-# # What Can Be Improved From This Code
-1. More EDA + Feature Engineering
-I have to admit that I skipped several variables since there are too many... But I think a better way to do it is -- looking at all the variables and do a pre-screening to have some idea which variables could carry more info for your prediction obejective. Then validate it with your feature importance and choose which to drop to avoid noise / make modeling faster. Also, you need to create more features based on the knowledge you gained from EDA and feature importance, and keep testing them and iterate.
-2. K-fold cross-validation
-As I mentioned above, I only did a 80/20 split of the training set for model validation here, which is not idea (but for simplicity). One thing to notice is, you need to do target-encoding only with your traning set for each fold, instead of create before CV, which will introduce info leakage.
-Tunning Parameters
-I did not do a through parameter tunning here, but just played with several values of max_depth, eta and nrounds. But given good feature engineering, tunning hyperparameter is always a good next step to improve your model performance. Some strategies include grid search (comprehesive but computational expensive), random search (faster but not global optimal), bayesian optimization (selects the next hyperparameter value based on the function outputs in the previous iterations).
-3. Model Ensemble
-Here only xgboost is used, but more models could be used, from the linear regression to other tree-based models (RF, lightGBM, catboost), or even deep leanring models. Then ensembling the predictions from these models will give a better overall prediction (at least in the case of Kaggle competitions... you know, in real world, we need to think about cost.)
+## Contents
+
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Data Cleaning and Preparation](#data-cleaning-and-preparation)
+- [Modeling with XGBoost](#modeling-with-xgboost)
+- [Packages Used](#packages-used)
+- [Possible Improvements](#possible-improvements)
+- [Conclusion](#conclusion)
+
+## Exploratory Data Analysis (EDA)
+
+Performed initial analysis on various numeric and categorical variables to understand the data distribution and relationships. This step helps in identifying patterns and potential issues in the data.
+
+## Data Cleaning and Preparation
+
+- **Data Type Fixing**: Corrected data types where necessary.
+- **Handling Missing Values**: Addressed missing values (NAs) using appropriate imputation methods.
+- **Categorical Variable Transformation**:
+  - Applied one-hot encoding and target encoding to convert categorical variables into numeric formats suitable for modeling.
+- **Feature Creation**:
+  - Developed simple and intuitive new features to enhance the model (limited feature engineering involved).
+
+## Modeling with XGBoost
+
+- Utilized the XGBoost regressor for modeling.
+- Set the objective to optimize the **RMSE of `log(SalePrice)`**, aligning with the competition's evaluation criteria.
+- Split the training data into an **80/20 train-test split** for model validation.
+  - *Note*: For better model validation, k-fold cross-validation is recommended, especially with larger datasets.
+
+## Packages Used
+
+**Python**
+
+- [`numpy`](https://numpy.org/)
+- [`pandas`](https://pandas.pydata.org/)
+- [`matplotlib`](https://matplotlib.org/)
+- [`seaborn`](https://seaborn.pydata.org/)
+- [`xgboost`](https://xgboost.readthedocs.io/)
+- [`scikit-learn`](https://scikit-learn.org/) (for data splitting)
+
+## Possible Improvements
+
+1. ### More EDA and Feature Engineering
+
+   - **Comprehensive Variable Analysis**: Examine all variables to identify those with significant predictive power.
+   - **Feature Importance Validation**: Use feature importance metrics to validate and select key variables.
+   - **Noise Reduction**: Drop less significant variables to reduce noise and improve model performance.
+   - **Iterative Feature Creation**: Continuously create and test new features based on insights from EDA.
+
+2. ### K-Fold Cross-Validation
+
+   - **Implement K-Fold CV**: Use k-fold cross-validation instead of a simple train-test split for more robust validation.
+   - **Avoid Information Leakage**: Perform target encoding within each training fold to prevent leakage.
+
+3. ### Hyperparameter Tuning
+
+   - **Thorough Tuning**: Go beyond basic parameters like `max_depth`, `eta`, and `nrounds`.
+   - **Tuning Strategies**:
+     - **Grid Search**: Exhaustive search over specified parameter values (computationally intensive).
+     - **Random Search**: Randomly sample parameter values (less exhaustive but faster).
+     - **Bayesian Optimization**: Utilize past evaluation results to choose the next set of parameters.
+
+4. ### Model Ensembling
+
+   - **Incorporate Additional Models**:
+     - Linear Regression
+     - Random Forest
+     - LightGBM
+     - CatBoost
+     - Deep Learning Models
+   - **Ensemble Techniques**: Combine predictions from multiple models to improve overall performance.
+     - *Note*: While ensembling can boost performance in competitions, consider the trade-offs in complexity and computational cost for real-world applications.
+
+## Conclusion
+
+This starter code provides a foundational approach to tackling the House Prices competition on Kaggle. By expanding on the areas of EDA, feature engineering, model validation, hyperparameter tuning, and ensembling, you can significantly enhance model performance and gain deeper insights into predictive modeling.
+
+---
+
+
